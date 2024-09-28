@@ -1,25 +1,22 @@
 name: Deploy to Heroku
 
-
 on:
   push:
     branches:
-      - main  # Trigger deployment on push to the main branch
+      - main  # Deploy when pushing to the main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/setup-node@v3  # Set up Node.js
-        with:
-          node-version: '20'
-      - name: Checkout the code
+      - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-
+          python-version: '3.10'  # Adjust Python version to your project needs
 
       - name: Install dependencies
         run: |
@@ -27,9 +24,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12  # Official Heroku Action
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}  # Must be the exact name of your Heroku app
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-
