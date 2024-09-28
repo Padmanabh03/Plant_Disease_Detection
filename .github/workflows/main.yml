@@ -3,11 +3,14 @@ name: Deploy to Heroku
 on:
   push:
     branches:
-      - main  # Deploy when pushing to the main branch
+      - main  # Trigger deployment on push to the main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE20: true  # Force the use of Node20
 
     steps:
       - name: Checkout code
@@ -16,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # Adjust Python version to your project needs
+          python-version: '3.10'  # Adjust based on your project needs
 
       - name: Install dependencies
         run: |
