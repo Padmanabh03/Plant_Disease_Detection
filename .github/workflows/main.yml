@@ -8,15 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
+      - uses: actions/setup-node@v3  # Set up Node.js
+        with:
+          node-version: '20'
       - name: Checkout the code
         uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'  # Adjust this based on your project’s Python version
+          python-version: '3.10'
+
 
       - name: Install dependencies
         run: |
