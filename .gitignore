@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+venv/
+instance/
+.env
+.DS_Store
+models/best_model.keras  # If the model is large, consider using Git LFS
