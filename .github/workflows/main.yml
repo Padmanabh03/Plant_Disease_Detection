@@ -3,29 +3,30 @@ name: Deploy to Heroku
 on:
   push:
     branches:
-      - main  # Deploy on push to the main branch
+      - main  # Trigger deployment on push to the main branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout the code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'  # Adjust this to your project’s Python version
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'  # Adjust this based on your project’s Python version
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Deploy to Heroku
-      uses: akshnz/heroku-deploy@v3.12.12
-      with:
-        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} # Your Heroku app name
-        heroku_email: ${{ secrets.HEROKU_EMAIL }}
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12  # Official Heroku Action
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}  # Must be the exact name of your Heroku app
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
 
