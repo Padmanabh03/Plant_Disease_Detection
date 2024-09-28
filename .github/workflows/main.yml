@@ -3,7 +3,7 @@ name: Deploy to Heroku
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main  # Deploy on push to the main branch
 
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'  # Specify your Python version
+        python-version: '3.10'  # Adjust this to your project’s Python version
 
     - name: Install dependencies
       run: |
@@ -26,6 +26,6 @@ jobs:
       uses: akshnz/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} # Must be unique in Heroku
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} # Your Heroku app name
         heroku_email: ${{ secrets.HEROKU_EMAIL }}
-        procfile: Procfile
+
