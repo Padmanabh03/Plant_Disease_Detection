@@ -1,0 +1,21 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Plant Disease Detection</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <label for="file">Upload an image of the plant leaf:</label><br><br>
+            <input type="file" name="file" id="file" accept="image/*" required><br><br>
+            <input type="submit" value="Detect Disease">
+        </form>
+    </div>
+</body>
+</html>
