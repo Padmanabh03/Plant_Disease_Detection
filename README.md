@@ -2,7 +2,7 @@
 
 This repository contains code and models for detecting and diagnosing plant diseases using a deep learning-based image classification model. The model is trained on a dataset of plant leaves affected by various diseases, and it can accurately classify multiple types of plant diseases based on the images of the affected leaves.
 
-![Confusion Matrix](./CNF_Plant_Disease.png)
+![Confusion Matrix](images/CNF_Plant_Disease.png)
 
 ## Table of Contents
 - [Project Overview](#project-overview)
